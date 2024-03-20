@@ -181,13 +181,10 @@ $products = array(
 function calculateCart($products) {
     $cart = array();
 
-    // Пройдемося по кожному товару у вхідному масиві
     foreach($products as $product) {
         $found = false;
-        // Перевіримо, чи такий товар вже є у кошику
         foreach($cart as &$item) {
             if($item['name'] === $product['name']) {
-                // Якщо товар знайдено, збільшимо кількість та підсумуємо ціну
                 $item['count'] += 1;
                 $item['total_price'] += $product['price'];
                 $found = true;
@@ -195,7 +192,6 @@ function calculateCart($products) {
             }
         }
 
-        // Якщо товару немає у кошику, додаємо його
         if(!$found) {
             $newItem = array(
                 'name' => $product['name'],
